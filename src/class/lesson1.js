@@ -2,16 +2,36 @@
  * created by : heiye1991
  * created time: 2018-11-16
  * description: let 和const
- *    es6 默认开始严格模式'use strict'，变量未声明使用报引用错误
- *    几个实际应该报ReferenceError的内容，经过webpack编译之后，没有报ReferenceError，反而是undefined
+ *    es6 默认开始严格模式'use strict'
+ *    几个实际应该报ReferenceError的内容，经过webpack编译之后，没有报ReferenceError，反而是undefined，暂未搞清原因
  */
-// console.log(n); // ReferenceError
-let n = 10;
-console.log(window);
-console.log(window.n); // undefined
+// let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性，返回undefined
+{
+  // console.log(n); // ReferenceError
+  let n = 10;
+  // console.log(window); // window对象
+  console.log(window.n); // undefined
+}
+//typeof 检测类型不再准确
+{
+  console.log(typeof x); // ReferenceError
+  let x =2;
+}
+// Object.assign
+{
+  const object1 = {
+    a : 1,
+    b : 2,
+    c : 3
+  };
+  const object2 = Object.assign({c: 4, d: 5}, object1);
+  console.log(object2.c, object2.d);
+}
 
 function test(str) {
+  //不能在函数内部重新声明参数
   // let str = 'sss'; // 编译不通过 报TypeError:  Duplicate declaration
+
   // console.log(a); // ReferenceError
   let a = 2;
   console.log(a);
@@ -39,6 +59,7 @@ function test(str) {
   Obj.age = 30;
   console.log(Obj);
 
+  // 代替IFFE
   let arr = [];
   for (let i = 0; i < 10; i++) {
     arr[i] = function () {

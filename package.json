@@ -22,7 +22,6 @@
   "homepage": "https://github.com/heiye1991/es6-learning#readme",
   "devDependencies": {
     "@babel/core": "^7.1.6",
-    "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.6",
     "babel-loader": "^8.0.4",
     "html-webpack-plugin": "^3.2.0",
