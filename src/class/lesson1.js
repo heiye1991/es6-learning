@@ -3,7 +3,7 @@
  * created time: 2018-11-16
  * description: let 和const
  *    es6 默认开始严格模式'use strict'
- *    几个实际应该报ReferenceError的内容，经过webpack编译之后，没有报ReferenceError，反而是undefined，暂未搞清原因
+ *    几个实际应该报ReferenceError的内容，经过编译之后，没有报ReferenceError，反而是undefined，暂未搞清原因
  */
 // let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性，返回undefined
 {
@@ -59,7 +59,7 @@ function test(str) {
   Obj.age = 30;
   console.log(Obj);
 
-  // 代替IFFE
+  // 代替IIFE
   let arr = [];
   for (let i = 0; i < 10; i++) {
     arr[i] = function () {
