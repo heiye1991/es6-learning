@@ -10,7 +10,7 @@
 }
 // Array.of方法用于将一组值，转换为数组
 {
-  console.log(Array.of(1,2,3));
+  console.log(Array.of(1, 2, 3));
   console.log(Array.of(1));
   console.log(Array.of());
 }
@@ -31,9 +31,9 @@
 }
 // fill方法使用给定值，填充一个数组
 {
-  console.log([1,2,3].fill(7));
-  console.log([1,2,3].fill(7,2));
-  console.log([1,2,3].fill(7,1,3));
+  console.log([1, 2, 3].fill(7));
+  console.log([1, 2, 3].fill(7, 2));
+  console.log([1, 2, 3].fill(7, 1, 3));
 }
 // entries()，keys()和values()——用于遍历数组。它们都返回一个遍历器对象，可以用for...of循环进行遍历，唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历
 {
@@ -43,18 +43,18 @@
   for (let value of [1, 2, 3].values()) {
     console.log(value);
   }
-  for (let [index,value] of [1, 2, 3].entries()) {
-    console.log(index,value);
+  for (let [index, value] of [1, 2, 3].entries()) {
+    console.log(index, value);
   }
 }
 // includes()方法返回一个布尔值，表示某个数组是否包含给定的值
 {
-  console.log([1,2,3,4].includes(1));
-  console.log([1,2,3,4].includes(1,1));
-  console.log([1,2,3,4].includes(1,-2));
-  console.log([1,2,3,4].includes(1,-5)); // 第二个参数超出数组长度置为0
-  console.log([1,2,3,NaN].indexOf(NaN)); // es5 indexOf不能正确识别判断是否包含NaN
-  console.log([1,2,3,NaN].includes(NaN)); // es6includes可以
+  console.log([1, 2, 3, 4].includes(1));
+  console.log([1, 2, 3, 4].includes(1, 1));
+  console.log([1, 2, 3, 4].includes(1, -2));
+  console.log([1, 2, 3, 4].includes(1, -5)); // 第二个参数超出数组长度置为0
+  console.log([1, 2, 3, NaN].indexOf(NaN)); // es5 indexOf不能正确识别判断是否包含NaN
+  console.log([1, 2, 3, NaN].includes(NaN)); // es6includes可以
 }
 // flat()用于将嵌套的数组“拉平”，变成一维的数组,该方法返回一个新数组，对原数据没有影响.默认为1，flat()方法会跳过空位
 // flatMap()方法对原数组的每个成员执行一个函数，然后对返回值组成的数组执行flat()方法。该方法返回一个新数组，不改变原数组,flatMap()只能展开一层数组
@@ -78,15 +78,15 @@
 }
 // find()和findIndex()
 {
-  console.log([1,2,3,4,5,6].find((n) => n>3)); // 找出第一个符合条件的数组成员
-  console.log([1,2,3,4,5,6].find((n) => n>10)); // 没找到返回undefined
+  console.log([1, 2, 3, 4, 5, 6].find((n) => n > 3)); // 找出第一个符合条件的数组成员
+  console.log([1, 2, 3, 4, 5, 6].find((n) => n > 10)); // 没找到返回undefined
   // find方法的回调函数可以接受三个参数，依次为当前的值、当前的位置和原数组
-  console.log([1, 2, 3, 4].find(function(value, index, arr) {
-    console.log(value,index,arr);
-    return value>10;
+  console.log([1, 2, 3, 4].find(function (value, index, arr) {
+    console.log(value, index, arr);
+    return value > 10;
   }));
-  console.log([1,2,3,4,5,6].findIndex((n) => n>3)); // 找出第一个符合条件的数组成员的位置
-  console.log([1,2,3,4,5,6].findIndex((n) => n>10)); // 没找到返回-1
+  console.log([1, 2, 3, 4, 5, 6].findIndex((n) => n > 3)); // 找出第一个符合条件的数组成员的位置
+  console.log([1, 2, 3, 4, 5, 6].findIndex((n) => n > 10)); // 没找到返回-1
 }
 // 数组空位处理
 // ES6 明确将空位转为undefined

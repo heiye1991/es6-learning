@@ -1,7 +1,7 @@
 /**
  * created by: heiye1991
  * created time: 2018-11-19
- * description:
+ * description: 函数扩展
  */
 // 函数参数默认值
 // 利用参数默认值，可以指定某一个参数不得省略

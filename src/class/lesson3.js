@@ -12,32 +12,32 @@
   // es6，后面的修饰符覆盖前面的修饰符
   let test3 = new RegExp(/xyz/i, 'g');
   // ES5 的 source 属性 返回正则表达式的正文
-  console.log(test1.source,test2.source,test3.source);
+  console.log(test1.source, test2.source, test3.source);
   // ES6 的 flags 属性 返回正则表达式的修饰符
-  console.log(test1.flags,test2.flags,test3.flags);
+  console.log(test1.flags, test2.flags, test3.flags);
 }
 // y修饰符
 {
   let s = 'ccc_cc_c';
   let r1 = /c+/ig;
   let r2 = /c+/iy;
-  console.log(r1.flags,r2.flags);
+  console.log(r1.flags, r2.flags);
   // 判断是否有y修饰符
-  console.log(r1.sticky,r2.sticky);
+  console.log(r1.sticky, r2.sticky);
   // 后一次匹配都从上一次匹配成功的下一个位置开始，g修饰符只要剩余位置中存在匹配就可，而y修饰符确保匹配必须从剩余的第一个位置开始
-  console.log(r1.exec(s),r2.exec(s));
-  console.log(r1.exec(s),r2.exec(s));
+  console.log(r1.exec(s), r2.exec(s));
+  console.log(r1.exec(s), r2.exec(s));
 }
 // u修饰符 用来正确处理大于\uFFFF的 Unicode 字符,会正确处理四个字节的 UTF-16 编码
 {
   let s = '\uD83D\uDC2A';
   let r1 = /\uD83D/i;
   let r2 = /\uD83D/iu;
-  console.log(r1.flags,r2.flags);
+  console.log(r1.flags, r2.flags);
   // 判断是否有u修饰符
-  console.log(r1.unicode,r2.unicode);
+  console.log(r1.unicode, r2.unicode);
   // u修饰符将后面的大于\uFFFF的字符当成一个
-  console.log(r1.test(s),r2.test(s));
+  console.log(r1.test(s), r2.test(s));
 }
 // 使用u修饰符后，所有量词都会正确识别码点大于0xFFFF的 Unicode 字符
 {
@@ -50,7 +50,7 @@
   console.log(/𠮷{2}/.test('𠮷𠮷'));
   console.log(/𠮷{2}/u.test('𠮷𠮷'));
   //ES6 新增了使用大括号表示 Unicode 字符在正则表达式中必须加上u修饰符，才能识别当中的大括号，否则会被解读为量词
-  console.log(/\u{61}/.test('a'),/\u{61}/u.test('a'));
+  console.log(/\u{61}/.test('a'), /\u{61}/u.test('a'));
   //预定义模式
   console.log(/^\S$/.test('𠮷'));
   console.log(/^\S$/u.test('𠮷'));
@@ -87,7 +87,7 @@
   const year = matchObj.groups.year;
   const month = matchObj.groups.month;
   const day = matchObj.groups.day;
-  console.log(matchObj,year,month,day);
+  console.log(matchObj, year, month, day);
   // 解构赋值
   /*let {groups: {one, two}} = /^(?<one>.*):(?<two>.*)$/u.exec('foo:bar');
   console.log(one,two);*/
