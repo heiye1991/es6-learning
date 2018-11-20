@@ -377,6 +377,7 @@
   function Greeting(name) {
     this.name = name;
   }
+
   console.log(Reflect.construct(Greeting, ['lisi']));
   console.log(new Greeting('lisi'));
 
@@ -402,6 +403,7 @@
   // 如果Reflect.defineProperty的第一个参数不是对象，就会抛出错误
   function MyDate() {
   }
+
   Object.defineProperty(MyDate, 'now', {
     value: () => Date.now()
   });
@@ -446,4 +448,53 @@
   console.log(Object.getOwnPropertySymbols(myOwnObject));
   // 新写法
   console.log(Reflect.ownKeys(myOwnObject));
+}
+// Proxy 和 Reflect 应用：实现解耦
+{
+  function validator(target, validator) {
+    return new Proxy(target, {
+      _validator: validator,
+      set(target, key, value, proxy) {
+        if (target.hasOwnProperty(key)) {
+          let va = this._validator[key];
+          if (!!va(value)) {
+            return Reflect.set(target, key, value, proxy)
+          } else {
+            throw Error(`不能设置${key}到${value}`)
+          }
+        } else {
+          throw Error(`${key} 不存在`)
+        }
+      }
+    })
+  }
+
+  let personValidators = {
+    name(val) {
+      return typeof val === 'string'
+    },
+    age(val) {
+      return typeof val === 'number' && val > 18
+    },
+    mobile(val) {
+    }
+  };
+
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+      this.mobile = '1111';
+      return validator(this, personValidators)
+    }
+  }
+
+  let person = new Person('lilei', 30);
+  console.info(person);
+  person.name = 'Han mei mei';
+  console.info(person);
+  // person.sex = 'male'; // 不存在的属性
+  // person.name = 55; // name 只能是string
+  // person.age = 15; // age只能是大于18的数值
+  console.info(person);
 }
