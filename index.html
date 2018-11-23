@@ -7,6 +7,10 @@
   <title>es6 learning</title>
 </head>
 <body>
-
+<!--浏览器加载 ES6 模块，使用<script>标签，但要加入type="module"属性-->
+<!--浏览器对于带有type="module"的<script>，都是异步加载，不会造成堵塞浏览器，即等到整个页面渲染完，再执行模块脚本，等同于打开了<script>标签的defer属性-->
+<!--有多个<script type="module">，它们会按照在页面出现的顺序依次执行-->
+<!--<script>标签的async属性也可以打开，这时只要加载完成，渲染引擎就会中断渲染立即执行。执行完成后，再恢复渲染。此时不会按顺序执行了-->
+<!--<script type="module" src="./src/class/lesson-export.js"></script>-->
 </body>
 </html>
